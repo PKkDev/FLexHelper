@@ -14,7 +14,7 @@
   <Properties>
     <DisplayName>FlexHelper.App</DisplayName>
     <PublisherDisplayName>prode</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\AppIcon\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -31,13 +31,14 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="FlexHelper.App"
+        DisplayName="FlexHelper"
         Description="FlexHelper.App"
         BackgroundColor="transparent"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        Square150x150Logo="Assets\AppIcon\Square150x150Logo.png"
+        Square44x44Logo="Assets\AppIcon\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\AppIcon\Wide310x150Logo.png"  Square71x71Logo="Assets\AppIcon\SmallTile.png" Square310x310Logo="Assets\AppIcon\LargeTile.png">
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\AppIcon\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>

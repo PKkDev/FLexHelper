@@ -30,7 +30,7 @@
 
         <NavigationView
             PaneDisplayMode="LeftCompact"
-            
+            IsPaneToggleButtonVisible="False"
             AlwaysShowHeader="False"
             x:Name="NavView"
             Canvas.ZIndex="0"

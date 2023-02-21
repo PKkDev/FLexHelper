@@ -12,10 +12,7 @@ namespace FlexHelper.App.MVVM.View;
 
 public sealed partial class ShellPage : Page
 {
-    public ShellViewModel ViewModel
-    {
-        get;
-    }
+    public ShellViewModel ViewModel { get; }
 
     private readonly List<(string Tag, Type Page)> _pages = new()
     {
