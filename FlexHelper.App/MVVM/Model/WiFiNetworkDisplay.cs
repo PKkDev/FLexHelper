@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Devices.WiFi;
@@ -16,24 +12,15 @@ public class WiFiNetworkDisplay : ObservableObject
 
     private WiFiAvailableNetwork _availableNetwork;
     public WiFiAvailableNetwork AvailableNetwork
-    {
-        get => _availableNetwork;
-        private set => SetProperty(ref _availableNetwork, value);
-    }
+    { get => _availableNetwork; private set => SetProperty(ref _availableNetwork, value); }
 
     private BitmapImage _wiFiImage;
     public BitmapImage WiFiImage
-    {
-        get => _wiFiImage;
-        private set => SetProperty(ref _wiFiImage, value);
-    }
+    { get => _wiFiImage; private set => SetProperty(ref _wiFiImage, value); }
 
     private string _connectivityLevel;
     public string ConnectivityLevel
-    {
-        get => _connectivityLevel;
-        private set => SetProperty(ref _connectivityLevel, value);
-    }
+    { get => _connectivityLevel; private set => SetProperty(ref _connectivityLevel, value); }
 
     public string Ssid => _availableNetwork.Ssid;
 
@@ -80,10 +67,10 @@ public class WiFiNetworkDisplay : ObservableObject
         {
             if (connectedSsid.Equals(AvailableNetwork.Ssid))
             {
-            //    connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
+                //    connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
             }
         }
 
-         ConnectivityLevel = connectivityLevel;
+        ConnectivityLevel = connectivityLevel;
     }
 }

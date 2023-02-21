@@ -12,26 +12,16 @@ namespace FlexHelper.App.MVVM.ViewModel;
 
 public class WiFiConnectViewModel : ObservableRecipient
 {
-    public ObservableCollection<WiFiAdapter> WiFiAdapters
-    {
-        get; private set;
-    }
-    public ObservableCollection<WiFiNetworkDisplay> WiFiNetworks
-    {
-        get; private set;
-    }
+    public ObservableCollection<WiFiAdapter> WiFiAdapters { get; private set; }
+    public ObservableCollection<WiFiNetworkDisplay> WiFiNetworks { get; private set; }
 
     private WiFiAdapter _selectedWiFiAdapter;
     public WiFiAdapter SelectedWiFiAdapter
     {
-        get => _selectedWiFiAdapter;
-        set => SetProperty(ref _selectedWiFiAdapter, value);
+        get => _selectedWiFiAdapter; set => SetProperty(ref _selectedWiFiAdapter, value);
     }
 
-    public ICommand SelectedWiFiAdapterChange
-    {
-        get;
-    }
+    public ICommand SelectedWiFiAdapterChange { get; }
 
     public WiFiConnectViewModel()
     {

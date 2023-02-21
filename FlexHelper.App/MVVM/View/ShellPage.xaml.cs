@@ -19,10 +19,9 @@ public sealed partial class ShellPage : Page
 
     private readonly List<(string Tag, Type Page)> _pages = new()
     {
-        ("Settings", typeof(SettingsPage)),
-        ("Home", typeof(SettingsPage)),
-        ("WiFiConnect", typeof(WiFiConnectPage)),
         ("MouseMover", typeof(MouseMoverPage)),
+        ("WiFiConnect", typeof(WiFiConnectPage)),
+        ("Settings", typeof(SettingsPage))
     };
 
     public ShellPage()
