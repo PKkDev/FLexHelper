@@ -1,0 +1,103 @@
+<Page
+    x:Class="FlexHelper.App.MVVM.View.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlexHelper.App.MVVM.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid x:Name="AppTitleBar"
+              Canvas.ZIndex="1"
+              Height="{Binding ElementName=NavView, Path=CompactPaneLength}"
+              IsHitTestVisible="True"
+              VerticalAlignment="Top">
+            <Image Source="/Assets/WindowIcon.ico"
+                   HorizontalAlignment="Left"
+                   Width="16"
+                   Height="16" />
+            <TextBlock x:Name="AppTitleBarText"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       VerticalAlignment="Center"
+                       Text="Flex Helper"
+                       TextWrapping="NoWrap"
+                       Margin="28,0,0,0"/>
+        </Grid>
+
+
+
+        <NavigationView
+            PaneDisplayMode="LeftCompact"
+            
+            AlwaysShowHeader="False"
+            x:Name="NavView"
+            Canvas.ZIndex="0"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="false"
+            Loaded="NavView_Loaded"
+            ItemInvoked="NavView_ItemInvoked"
+            BackRequested="NavView_BackRequested"
+            DisplayModeChanged ="NavView_DisplayModeChanged"
+            Header="asdasdeader">
+
+            <!--<NavigationView.PaneHeader>
+                <RelativePanel VerticalAlignment="Center">
+                    <Image Margin="5,0,0,0" Height="35" Canvas.ZIndex="2" Source="/Assets/NavigationViewIcons/microsoft_logo_1.png"></Image>
+                </RelativePanel>
+            </NavigationView.PaneHeader>-->
+
+
+
+            <!--<NavigationView.AutoSuggestBox>
+                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
+            </NavigationView.AutoSuggestBox>-->
+
+            <NavigationView.MenuItems>
+
+                <NavigationViewItem Content="mouse mover" Tag="MouseMover">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE962;"></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="wi-fi connect" Tag="WiFiConnect">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE701;"></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="settings" Tag="Settings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;"></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+            </NavigationView.MenuItems>
+
+            <!--<NavigationView.PaneFooter>
+                <RelativePanel VerticalAlignment="Center">
+                    <Image Margin="5,0,0,0" Height="35" Canvas.ZIndex="2" Source="/Assets/NavigationViewIcons/microsoft_logo_1.png"></Image>
+                </RelativePanel>
+            </NavigationView.PaneFooter>-->
+
+            <Grid Margin="0,0,0,0" Padding="10">
+
+                <InfoBar x:Name="PageInfoBar" Canvas.ZIndex="2" IsOpen="False" HorizontalAlignment="Right" />
+
+                <Frame x:Name="ContentFrame" NavigationFailed="ContentFrame_NavigationFailed">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition  />
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+
+                </Frame>
+            </Grid>
+
+        </NavigationView>
+
+    </Grid>
+
+</Page>

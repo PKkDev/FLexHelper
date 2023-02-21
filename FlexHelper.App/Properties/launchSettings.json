@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FlexHelper.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "FlexHelper.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

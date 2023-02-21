@@ -1,0 +1,63 @@
+<Page
+    x:Class="FlexHelper.App.MVVM.View.MouseMoverPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+
+        <StackPanel Orientation="Horizontal" Spacing="15" Margin="0 0 0 15">
+
+            <StackPanel Spacing="5">
+                <TextBlock Text="distance:" />
+                <TextBox Text="{Binding Distance}" />
+            </StackPanel>
+
+            <StackPanel Spacing="5">
+                <TextBlock Text="interval:" />
+                <TextBox Text="{Binding Interval}" />
+            </StackPanel>
+
+            <StackPanel Spacing="5">
+                <TextBlock Text="coefFast:" />
+                <TextBox Text="{Binding CoefFast}" />
+            </StackPanel>
+
+        </StackPanel>
+
+        <Button Content="{Binding BtnText}" 
+                Command="{Binding CycleCommand}"
+                Margin="0 0 0 15"
+                AccessKey="S"
+                KeyTipPlacementMode="Auto"
+                Height="69" Width="312" />
+
+        <TextBlock Text="Pause:"  Margin="0 0 0 15" />
+
+        <ProgressBar HorizontalAlignment="Left"
+                     Width="312"
+                     Minimum="0"
+                     Maximum="{Binding Interval}"
+                     Value="{Binding MouseMoverWorker.TimerCounter}">
+            <ProgressBar.RenderTransform>
+                <ScaleTransform ScaleY="4" />
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+
+        <TextBlock Text="Work:"  Margin="0 15 0 15" />
+
+        <ProgressBar HorizontalAlignment="Left"
+                     Width="312"
+                     Minimum="0"
+                     Maximum="{Binding MouseMoverWorker.MaxWorkCounter}"
+                     Value="{Binding MouseMoverWorker.WorkCounter}">
+            <ProgressBar.RenderTransform>
+                <ScaleTransform ScaleY="4" />
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+
+    </StackPanel>
+
+</Page>
