@@ -1,0 +1,51 @@
+﻿<Window x:Class="FLexHelper.UIT.MVVM.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Flex work helper" 
+        Height="320" Width="450"
+        ResizeMode="NoResize"
+        
+        Background="Transparent">
+
+    <Border Background="{DynamicResource AppBackgroundColor}">
+
+        <DockPanel>
+
+            <Grid DockPanel.Dock="Left"
+                  Width="110">
+
+                <StackPanel Orientation="Vertical">
+
+                    <RadioButton Content="Mouse mover"
+                                 IsChecked="true"
+                                 Command="{Binding MouseMoverViewCommand}"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+
+                    <RadioButton Content="RDP connect"
+                                 IsChecked="false"
+                                 Command="{Binding RDPConnectViewCommand}"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+
+                    <RadioButton Content="People game"
+                                 IsChecked="false"
+                                 Command="{Binding PeopleGameViewCommand}"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+
+
+                </StackPanel>
+
+            </Grid>
+
+            <ContentControl DockPanel.Dock="Right"
+                            ContentTemplateSelector="{StaticResource selector}"
+                            Content="{Binding CurrentView }">
+            </ContentControl>
+
+        </DockPanel>
+
+    </Border>
+
+</Window>

@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="FLexHelper.UIT.MVVM.View.PeopleGameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             IsVisibleChanged="UserControl_IsVisibleChanged"
+             KeyUp="Window_KeyUp"
+             d:DesignHeight="320" d:DesignWidth="340">
+    <Border Background="{DynamicResource AppBackgroundColor}">
+
+        <Grid>
+
+            <Button Content="Start" 
+                    HorizontalAlignment="Left" 
+                    Margin="7,2,0,0"
+                    VerticalAlignment="Top"
+                    Command="{Binding ReloadMapCommand}" Width="46"/>
+
+            <Label x:Name="textBox" 
+                   Foreground="#fff"
+                     HorizontalAlignment="Left" 
+                     Margin="52,-2,0,0" Content="Wood:" 
+                     VerticalAlignment="Top" 
+                     Width="55"/>
+            <TextBox HorizontalAlignment="Left" 
+                     Margin="100,1,0,0" 
+                     Text="{Binding CollectedWood}" 
+                     IsReadOnly="True"
+                     TextWrapping="NoWrap"
+                     VerticalAlignment="Top" Width="29"/>
+
+            <Label x:Name="textBox1" 
+                   Foreground="#fff" 
+                     HorizontalAlignment="Left" Content="People:" 
+                     VerticalAlignment="Top" 
+                     Width="58" Margin="113,18,0,0"/>
+            <TextBox HorizontalAlignment="Left" 
+                     Margin="161,22,0,0" 
+                     Text="{Binding CollectedPeople}" 
+                     IsReadOnly="True"
+                     TextWrapping="NoWrap" 
+                     VerticalAlignment="Top" Width="29"/>
+
+            <Label HorizontalAlignment="Left"
+                   Foreground="#fff" 
+                   Content="Houses:" 
+                   VerticalAlignment="Top" 
+                   Width="58" 
+                   Margin="131,-3,0,0"/>
+            <TextBox HorizontalAlignment="Left" 
+                     Margin="181,1,0,0" 
+                     Text="{Binding CountHouse}" 
+                     IsReadOnly="True"
+                     TextWrapping="NoWrap" 
+                     VerticalAlignment="Top" 
+                     Width="29"/>
+
+            <Canvas Name="GameMap"
+                            Background="White"
+                            Margin="10,48,42,8"/>
+
+            <!--<ScrollViewer VerticalScrollBarVisibility="auto"
+                          HorizontalScrollBarVisibility="auto" 
+                          Margin="0,43,0,0"
+                          Padding="5">
+
+                <Grid Width="300"
+                      Height="220"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Name="GameMapGrid">
+
+                    <Canvas Name="GameMap"
+                            Background="White"
+                            Margin="10"/>
+
+                </Grid>
+
+            </ScrollViewer>-->
+
+            <Slider x:Name="MapScale"
+                    Value="1"
+                    Minimum="1"
+                    Maximum="5"
+                    SmallChange="1"
+                    LargeChange="1"
+                    TickFrequency="1"
+                    SelectionStart="1"
+                    SelectionEnd="5"
+                    HorizontalAlignment="Left" 
+                    Margin="9,25,0,0" 
+                    IsSelectionRangeEnabled="True"
+                    VerticalAlignment="Top"
+                    Width="55" 
+                    ValueChanged="MapScale_ValueChanged"/>
+
+            <Slider x:Name="GameSpeed" 
+                    Value="1000"
+                    Minimum="10"
+                    Maximum="1000"
+                    SelectionEnd="1000"
+                    IsSelectionRangeEnabled="True"
+                    HorizontalAlignment="Left" 
+                    Margin="65,24,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="52" 
+                    RenderTransformOrigin="0.5,0.5"
+                    ValueChanged="GameSpeed_ValueChanged">
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
+
+            <Label HorizontalAlignment="Left"
+                   Foreground="#fff"
+                   Content="Rock:" 
+                   VerticalAlignment="Top" 
+                   Width="58" 
+                   Margin="214,-3,0,0"/>
+            <TextBox HorizontalAlignment="Left" 
+                     Margin="251,1,0,0" 
+                     Text="{Binding CollectedRock}" 
+                     IsReadOnly="True"
+                     TextWrapping="NoWrap" 
+                     VerticalAlignment="Top" 
+                     Width="29"/>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

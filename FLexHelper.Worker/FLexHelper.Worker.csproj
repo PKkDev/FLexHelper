@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Device.Net" Version="4.3.0-beta" />
+    <PackageReference Include="Device.Net.LibUsb" Version="4.3.0-beta" />
+    <PackageReference Include="Hid.Net" Version="4.3.0-beta" />
+    <PackageReference Include="LibUsbDotNet" Version="3.0.97-alpha" />
+    <PackageReference Include="System.Management" Version="6.0.0" />
+    <PackageReference Include="Usb.Net" Version="4.3.0-beta" />
+  </ItemGroup>
+
+</Project>

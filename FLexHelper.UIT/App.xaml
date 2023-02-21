@@ -1,0 +1,62 @@
+﻿<Application x:Class="MouseMover.UIT.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MouseMover.UIT"
+             xmlns:viewModel="clr-namespace:FLexHelper.UIT.MVVM.ViewModel"
+             xmlns:view="clr-namespace:FLexHelper.UIT.MVVM.View"
+             xmlns:coref="clr-namespace:FLexHelper.UIT.Core"
+             StartupUri="/MVVM/View/MainWindow.xaml">
+    <!--StartupUri="MainWindow.xaml"-->
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary x:Name="dark" Source="Theme/Global/dark.xaml"/>
+
+                <ResourceDictionary Source="Theme/Button/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/Button/MenuButtonTheme.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="MouseMoverView">
+                <view:MouseMoverView/>
+            </DataTemplate>
+            <DataTemplate x:Key="RDPConnectView">
+                <view:RDPConnectView/>
+            </DataTemplate>
+            <DataTemplate x:Key="PeopleGameView">
+                <view:PeopleGameView/>
+            </DataTemplate>
+
+            <coref:CustomTemplateSelector x:Key="selector" 
+                                          MouseMoverView="{StaticResource MouseMoverView}"
+                                          RDPConnectView="{StaticResource RDPConnectView}"
+                                          PeopleGameView="{StaticResource PeopleGameView}"/>
+
+            <!--<DataTemplate DataType="{x:Type viewModel:MouseMoverViewModel}">
+                <view:MouseMoverView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AutoConnectViewModel}">
+                <view:AutoConnectView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MouseHookViewModel}">
+                <view:MouseHookView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SnakeGameViewModel}">
+                <view:SnakeGameView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:PeopleGameViewModel}">
+                <view:PeopleGameView/>
+            </DataTemplate>-->
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

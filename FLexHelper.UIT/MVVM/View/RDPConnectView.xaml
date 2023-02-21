@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="FLexHelper.UIT.MVVM.View.RDPConnectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FLexHelper.UIT.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="340">
+
+    <UserControl.Resources>
+
+        <Style x:Key="base_lb" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Border Background="{DynamicResource AppBackgroundColor}">
+
+        <StackPanel Margin="5">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="86*"/>
+                    <ColumnDefinition Width="157*"/>
+                    <ColumnDefinition Width="87*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label VerticalAlignment="Center" Grid.Column="0" Content="KeyName:" Style="{StaticResource base_lb}" Height="30" Margin="5,0,5,0" />
+                <TextBox VerticalAlignment="Center" Grid.Column="1"  Margin="5,0,5,0" Text="{Binding NewConnectionKey, UpdateSourceTrigger=PropertyChanged}" Height="18"/>
+                <Button  Grid.Column="2" Style="{StaticResource ModernButtonTemplate}"
+                         Command="{Binding AddConnectCommand}"
+                         VerticalAlignment="Center"
+                         Padding="5"
+                         FontSize="15"
+                         Margin="0,0,5,0"
+                         Content="Add" Height="26" />
+            </Grid>
+
+            <Label Content="Total connections:" 
+                   Style="{StaticResource base_lb}" />
+            <ComboBox VerticalAlignment="Center"
+                      MinWidth="70"
+                      Margin="5,0,5,0"
+                      ItemsSource="{Binding Connections}"
+                      SelectedItem="{Binding SelectedConnection}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding KeyName}" Padding="0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Adress:" Style="{StaticResource base_lb}" />
+                <TextBox Grid.Row="1" Grid.Column="0"  Margin="5,0,5,0" Text="{Binding SelectedConnection.Adress, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Row="0" Grid.Column="1" Content="Port:" Style="{StaticResource base_lb}" />
+                <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0,5,0" Text="{Binding SelectedConnection.Port, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </Grid>
+
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Content="UserName:" Style="{StaticResource base_lb}" />
+                <TextBox Margin="5,0,5,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Text="{Binding SelectedConnection.UserName, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="0" Grid.Row="1" Content="Password:" Style="{StaticResource base_lb}" />
+                <TextBox Margin="5,0,5,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedConnection.Password, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Column="0" Grid.Row="2" Content="KeyName:"  Style="{StaticResource base_lb}" />
+                <TextBox Margin="5,0,5,0"  VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"  Text="{Binding SelectedConnection.KeyName, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </Grid>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource ModernButtonTemplate}"
+                        Command="{Binding SaveConfigCommand}"
+                        Padding="5"
+                        FontSize="15"
+                        Margin="0 5 5 5"
+                        Content="Save" />
+
+                <Button Style="{StaticResource ModernButtonTemplate}"
+                        Command="{Binding RemoveConnectCommand}"
+                        Padding="5"
+                        FontSize="15"
+                        Margin="0 5 5 5"
+                        Content="Remove" />
+
+                <Button Style="{StaticResource ModernButtonTemplate}"
+                        Command="{Binding GeneraeCommand}"
+                        Padding="5"
+                        FontSize="15"
+                        Margin="0 5 5 5"
+                        Content="Create RDP" />
+            </StackPanel>
+
+        </StackPanel>
+
+    </Border>
+
+</UserControl>
