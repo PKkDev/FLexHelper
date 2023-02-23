@@ -103,7 +103,7 @@
 
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Security Key:" Margin="5,0,5,0" VerticalAlignment="Bottom"/>
-                    <PasswordBox Password="{x:Bind ViewModel.PasswordWiFi}" Width="124" Margin="5,0,10,0"/>
+                    <PasswordBox Password="{x:Bind ViewModel.PasswordWiFi, Mode=TwoWay}" Width="124" Margin="5,0,10,0"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
