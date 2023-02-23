@@ -10,33 +10,42 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="50"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <controls:AdaptiveGridView
+        <controls:AdaptiveGridView 
             Grid.Row="0"
             ItemsSource="{Binding WiFiAdapters }"
             SelectionMode="None"
             IsItemClickEnabled ="True"
             ItemClickCommand="{Binding SelectedWiFiAdapterChange}">
+
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding NetworkAdapter.IanaInterfaceType}"/>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="{Binding DeviceInfo.Name}"/>
+                        <TextBlock Text="{Binding WiFiAdapter.NetworkAdapter.IanaInterfaceType}"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
+
         </controls:AdaptiveGridView>
 
         <Border Grid.Row="1" BorderBrush="AntiqueWhite" BorderThickness="1">
 
-            <ListView x:Name="ResultsListView"
+            <ListView x:Name="WiFiList"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
-                      ItemsSource="{Binding WiFiNetworks}">
+                      ItemsSource="{Binding WiFiNetworks}"
+                      SelectionMode="None"
+                      IsItemClickEnabled="True"
+                      ItemClick="WiFiListItemClick">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="2">
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*" MinWidth="100"/>
@@ -45,6 +54,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
+
                             <Border Grid.Column="0" Grid.Row="0" Height="32" Width="32" Margin="0,5" VerticalAlignment="Top" HorizontalAlignment="Left">
                                 <Image Source="{Binding Path=WiFiImage}" Stretch="UniformToFill"/>
                             </Border>
@@ -55,6 +65,7 @@
                                     <TextBlock Text="{Binding Path=Ssid}" FontWeight="Bold" TextWrapping="Wrap"/>
                                 </StackPanel>
                             </Border>
+
                             <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
@@ -77,12 +88,32 @@
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
+
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
             </ListView>
 
         </Border>
+
+        <ScrollViewer Grid.Row="2">
+
+            <StackPanel Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Security Key:" Margin="5,0,5,0" VerticalAlignment="Bottom"/>
+                    <PasswordBox Password="{x:Bind ViewModel.PasswordWiFi}" Width="124" Margin="5,0,10,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <CheckBox IsChecked="False">Auto reconnect?</CheckBox>
+                    <Button Command="{x:Bind ViewModel.OnConnect}" Margin="5,0,0,0">Connect</Button>
+                </StackPanel>
+
+            </StackPanel>
+
+        </ScrollViewer>
 
     </Grid>
 
