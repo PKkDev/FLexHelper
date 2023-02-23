@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Net.NetworkInformation;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -46,7 +47,7 @@ public class WiFiConnectViewModel : ObservableRecipient
             {
                 SelectedWiFiAdapter = param.WiFiAdapter;
                 await SelectedWiFiAdapter.ScanAsync();
-                DisplayNetworkReport(SelectedWiFiAdapter);
+                await DisplayNetworkReport(SelectedWiFiAdapter);
             }
         });
 
@@ -88,11 +89,12 @@ public class WiFiConnectViewModel : ObservableRecipient
         LoadAdapters();
     }
 
-    private async void DisplayNetworkReport(WiFiAdapter adapter)
+    private async Task DisplayNetworkReport(WiFiAdapter adapter)
     {
         WiFiNetworks.Clear();
 
-        var connectedProfile = await adapter.NetworkAdapter.GetConnectedProfileAsync();
+        ConnectionProfile connectedProfile = await adapter.NetworkAdapter.GetConnectedProfileAsync();
+        //var connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
         foreach (var network in adapter.NetworkReport.AvailableNetworks)
         {
             WiFiNetworkDisplay networkDisplay = new(network, adapter);
@@ -115,7 +117,6 @@ public class WiFiConnectViewModel : ObservableRecipient
         foreach (DeviceInformation deviceInfo in result)
         {
             WiFiAdapter adapter = await WiFiAdapter.FromIdAsync(deviceInfo.Id);
-            var connectedProfile = await adapter.NetworkAdapter.GetConnectedProfileAsync();
             WiFiAdapters.Add(new AdapterDisplayModel(deviceInfo, adapter));
         }
     }

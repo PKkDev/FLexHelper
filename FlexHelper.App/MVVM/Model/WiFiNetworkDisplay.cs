@@ -67,7 +67,7 @@ public class WiFiNetworkDisplay : ObservableObject
         {
             if (connectedSsid.Equals(AvailableNetwork.Ssid))
             {
-                //    connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
+                    //connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
             }
         }
 
