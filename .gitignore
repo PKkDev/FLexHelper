@@ -395,7 +395,7 @@ FodyWeavers.xsd
 # Windows Installer files from build outputs
 *.cab
 *.msi
-*.msix
+#*.msix
 *.msm
 *.msp
 
@@ -472,7 +472,7 @@ $RECYCLE.BIN/
 # Windows Installer files
 *.cab
 *.msi
-*.msix
+#*.msix
 *.msm
 *.msp
 
