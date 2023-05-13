@@ -5,80 +5,53 @@ using Windows.ApplicationModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls.Primitives;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using FlexHelper.App.MVVM.Model;
+using System.Linq;
 
 namespace FlexHelper.App.MVVM.ViewModel;
 
 public class SettingsViewModel : ObservableRecipient
 {
-
-    private string _versionDescription;
-    public string VersionDescription
+    public ObservableCollection<UITheme> Themes { get; set; }
+    private UITheme _selectedTheme;
+    public UITheme SelectedTheme
     {
-        get => _versionDescription;
-        set => SetProperty(ref _versionDescription, value);
-    }
-
-    private ElementTheme _elementTheme;
-    public ElementTheme ElementTheme
-    {
-        get => _elementTheme;
-        set => SetProperty(ref _elementTheme, value);
-    }
-
-    public ICommand SwitchThemeCommand
-    {
-        get;
+        get { return _selectedTheme; }
+        set
+        {
+            SetTheme(value);
+            SetProperty(ref _selectedTheme, value);
+        }
     }
 
     public SettingsViewModel()
     {
-        _versionDescription = GetVersionDescription();
-
-        SwitchThemeCommand = new RelayCommand<ElementTheme>(
-            async (param) =>
-            {
-                if (ElementTheme != param)
-                {
-                    ElementTheme = param;
-                    await SetThemeAsync(param);
-                }
-            });
-    }
-
-    private static string GetVersionDescription()
-    {
-        Version version;
-
-        if (false)
+        Themes = new()
         {
-            var packageVersion = Package.Current.Id.Version;
+            new UITheme("Default", ElementTheme.Default),
+            new UITheme("Dark", ElementTheme.Dark),
+            new UITheme("Light", ElementTheme.Light),
+        };
 
-            version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
-        }
-        else
+        if (App.MainWindow.Content is FrameworkElement rootElement2)
         {
-            version = Assembly.GetExecutingAssembly().GetName().Version!;
+            var theme = rootElement2.RequestedTheme;
+            var search = Themes.FirstOrDefault(x => x.Theme == theme);
+            if (search != null)
+                SelectedTheme = search;
         }
-
-        return $"{"AppDisplayName"} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
 
-    public async Task SetThemeAsync(ElementTheme theme)
-    {
-        await SetRequestedThemeAsync(theme);
-    }
-
-    public async Task SetRequestedThemeAsync(ElementTheme theme)
+    public void SetTheme(UITheme theme)
     {
         if (App.MainWindow.Content is FrameworkElement rootElement)
         {
-            rootElement.RequestedTheme = theme;
+            if (rootElement.RequestedTheme == theme.Theme)
+                return;
 
-            //TitleBarHelper.UpdateTitleBar(theme);
+            rootElement.RequestedTheme = theme.Theme;
         }
-
-        await Task.CompletedTask;
     }
 }

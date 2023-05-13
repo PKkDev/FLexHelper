@@ -13,72 +13,31 @@
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
 
-    <Grid Padding="15" >
+    <Grid>
 
-        <StackPanel
-            x:Name="ContentArea">
-
-            <TextBlock Text="Personalization" />
+        <StackPanel>
 
             <StackPanel Margin="0,8,0,0">
 
-                <TextBlock Text="Theme" />
-
-                <StackPanel Margin="0,8,0,0">
-
-                    <RadioButton
-                        Content="Light"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Light</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-
-                    <RadioButton
-                        Content="Dark"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-
-                    <RadioButton
-                        Content="Default"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Default</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-
-                </StackPanel>
-
-            </StackPanel>
-
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-            <StackPanel Margin="0,8,0,0">
-
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}"  />
-
-                <TextBlock
-                    Text="TODO: Replace with your app description."
-                    Margin="0,8,0,0"/>
-
-                <HyperlinkButton Content="YourPrivacyUrlGoesHere/" NavigateUri="https://YourPrivacyUrlGoesHere/" Margin="0,8,0,0" />
+                <ComboBox 
+                    Header="Theme" 
+                    ItemsSource="{x:Bind ViewModel.Themes}" 
+                    SelectedItem="{x:Bind ViewModel.SelectedTheme, Mode=TwoWay}" 
+                    Width="200">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Title}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
             </StackPanel>
 
         </StackPanel>
 
     </Grid>
+
 
 </Page>

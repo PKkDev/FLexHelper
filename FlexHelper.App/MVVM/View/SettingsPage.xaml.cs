@@ -5,14 +5,11 @@ namespace FlexHelper.App.MVVM.View;
 
 public sealed partial class SettingsPage : Page
 {
-    public SettingsViewModel ViewModel
-    {
-        get;
-    }
+    public SettingsViewModel ViewModel { get; set; }
 
     public SettingsPage()
     {
         InitializeComponent();
-        ViewModel = App.GetService<SettingsViewModel>();
+        DataContext = ViewModel = App.GetService<SettingsViewModel>();
     }
 }

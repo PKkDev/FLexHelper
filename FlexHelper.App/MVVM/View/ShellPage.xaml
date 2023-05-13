@@ -14,7 +14,7 @@
               Height="{Binding ElementName=NavView, Path=CompactPaneLength}"
               IsHitTestVisible="True"
               VerticalAlignment="Top">
-            <Image Source="/Assets/WindowIcon.ico"
+            <Image Source="/Assets/FlexHelper.ico"
                    HorizontalAlignment="Left"
                    Width="16"
                    Height="16" />
