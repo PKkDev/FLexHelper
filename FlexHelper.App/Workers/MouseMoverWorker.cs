@@ -65,8 +65,8 @@ namespace FlexHelper.App.Workers
                 {
                     while (true)
                     {
-                        MouseWork();
                         SetInterval();
+                        MouseWork();
                     }
                 }
                 catch (OperationCanceledException)

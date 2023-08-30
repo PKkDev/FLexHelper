@@ -9,28 +9,14 @@ using FlexHelper.App.MVVM.View;
 using Microsoft.UI.Xaml.Controls;
 using FlexHelper.App.Services;
 using Microsoft.UI.Windowing;
-using Windows.UI.Core;
-using Microsoft.UI.Xaml.Input;
-
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace FlexHelper.App;
-/// <summary>
-/// Provides application-specific behavior to supplement the default Application class.
-/// </summary>
+
 public partial class App : Application
 {
-    public static Window MainWindow
-    {
-        get; set;
-    }
+    public static Window MainWindow { get; set; }
 
-    public IHost Host
-    {
-        get;
-    }
+    public IHost Host { get; }
 
     private UIElement? _shell;
 
@@ -92,9 +78,9 @@ public partial class App : Application
         var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
         var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-        appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 400, Height = 450 });
+        appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 500, Height = 500 });
 
-        OverlappedPresenter overlappedPresenter = appWindow.Presenter as OverlappedPresenter;
-        overlappedPresenter.IsResizable = false;
+        //OverlappedPresenter overlappedPresenter = appWindow.Presenter as OverlappedPresenter;
+        //overlappedPresenter.IsResizable = false;
     }
 }
