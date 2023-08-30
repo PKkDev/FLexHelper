@@ -12,25 +12,37 @@ public class WiFiNetworkDisplay : ObservableObject
 
     private WiFiAvailableNetwork _availableNetwork;
     public WiFiAvailableNetwork AvailableNetwork
-    { get => _availableNetwork; private set => SetProperty(ref _availableNetwork, value); }
+    {
+        get => _availableNetwork;
+        private set => SetProperty(ref _availableNetwork, value);
+    }
 
     private BitmapImage _wiFiImage;
     public BitmapImage WiFiImage
-    { get => _wiFiImage; private set => SetProperty(ref _wiFiImage, value); }
+    {
+        get => _wiFiImage;
+        private set => SetProperty(ref _wiFiImage, value);
+    }
 
     private string _connectivityLevel;
     public string ConnectivityLevel
-    { get => _connectivityLevel; private set => SetProperty(ref _connectivityLevel, value); }
+    {
+        get => _connectivityLevel;
+        private set => SetProperty(ref _connectivityLevel, value);
+    }
 
     public string Ssid => _availableNetwork.Ssid;
 
     public string Bssid => _availableNetwork.Bssid;
 
-    public string ChannelCenterFrequency => string.Format("{0}kHz", _availableNetwork.ChannelCenterFrequencyInKilohertz);
+    public string ChannelCenterFrequency 
+        => string.Format("{0}kHz", _availableNetwork.ChannelCenterFrequencyInKilohertz);
 
-    public string Rssi => string.Format("{0}dBm", _availableNetwork.NetworkRssiInDecibelMilliwatts);
+    public string Rssi 
+        => string.Format("{0}dBm", _availableNetwork.NetworkRssiInDecibelMilliwatts);
 
-    public string SecuritySettings => string.Format("Authentication: {0}; Encryption: {1}", _availableNetwork.SecuritySettings.NetworkAuthenticationType, _availableNetwork.SecuritySettings.NetworkEncryptionType);
+    public string SecuritySettings 
+        => string.Format("Authentication: {0}; Encryption: {1}", _availableNetwork.SecuritySettings.NetworkAuthenticationType, _availableNetwork.SecuritySettings.NetworkEncryptionType);
 
     public WiFiNetworkDisplay(WiFiAvailableNetwork availableNetwork, WiFiAdapter adapter)
     {
@@ -67,7 +79,7 @@ public class WiFiNetworkDisplay : ObservableObject
         {
             if (connectedSsid.Equals(AvailableNetwork.Ssid))
             {
-                    //connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
+                //connectivityLevel = connectedProfile.GetNetworkConnectivityLevel().ToString();
             }
         }
 

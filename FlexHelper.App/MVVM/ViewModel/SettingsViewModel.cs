@@ -1,11 +1,5 @@
-﻿using System.Reflection;
-using System;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Windows.ApplicationModel;
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using FlexHelper.App.MVVM.Model;
 using System.Linq;

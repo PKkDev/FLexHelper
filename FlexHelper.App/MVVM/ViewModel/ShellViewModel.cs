@@ -4,6 +4,5 @@ namespace FlexHelper.App.MVVM.ViewModel;
 
 public class ShellViewModel : ObservableRecipient
 {
-    public ShellViewModel()
-    { }
+    public ShellViewModel() { }
 }

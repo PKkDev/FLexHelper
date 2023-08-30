@@ -20,16 +20,13 @@ public class WiFiConnectViewModel : ObservableRecipient
     public ObservableCollection<WiFiNetworkDisplay> WiFiNetworks { get; private set; }
 
     private string _passwordWiFi;
-    public string PasswordWiFi
-    { get => _passwordWiFi; set => SetProperty(ref _passwordWiFi, value); }
+    public string PasswordWiFi { get => _passwordWiFi; set => SetProperty(ref _passwordWiFi, value); }
 
     private WiFiNetworkDisplay _selectedWiFiNetwork;
-    public WiFiNetworkDisplay SelectedWiFiNetwork
-    { get => _selectedWiFiNetwork; set => SetProperty(ref _selectedWiFiNetwork, value); }
+    public WiFiNetworkDisplay SelectedWiFiNetwork { get => _selectedWiFiNetwork; set => SetProperty(ref _selectedWiFiNetwork, value); }
 
     private WiFiAdapter _selectedWiFiAdapter;
-    public WiFiAdapter SelectedWiFiAdapter
-    { get => _selectedWiFiAdapter; set => SetProperty(ref _selectedWiFiAdapter, value); }
+    public WiFiAdapter SelectedWiFiAdapter { get => _selectedWiFiAdapter; set => SetProperty(ref _selectedWiFiAdapter, value); }
 
     public ICommand SelectedWiFiAdapterChange { get; }
     public ICommand OnConnect { get; }
