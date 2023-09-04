@@ -25,8 +25,10 @@ namespace FlexHelper.App.Services
             FileInfo info = new(path);
             if (!info.Exists)
             {
-                AppSettingsFile = await ApplicationData.Current.LocalFolder
-                       .CreateFileAsync(FileName, CreationCollisionOption.ReplaceExisting);
+                AppSettingsFile = ApplicationData.Current.LocalFolder
+                       .CreateFileAsync(FileName, CreationCollisionOption.ReplaceExisting)
+                       .GetAwaiter()
+                       .GetResult();
 
                 AppSettings = StorageSettings.CreateDefault();
 
@@ -41,9 +43,11 @@ namespace FlexHelper.App.Services
                     File.Delete(path);
                     await SetOrCreateConfig();
                 }
-
-                AppSettingsFile = StorageFile.GetFileFromPathAsync(path).GetAwaiter().GetResult();
-                AppSettings = JsonSerializer.Deserialize<StorageSettings>(text);
+                else
+                {
+                    AppSettingsFile = StorageFile.GetFileFromPathAsync(path).GetAwaiter().GetResult();
+                    AppSettings = JsonSerializer.Deserialize<StorageSettings>(text);
+                }
             }
         }
 
