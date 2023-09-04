@@ -1,7 +1,12 @@
 ﻿using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using FlexHelper.App.MVVM.Model;
+using FlexHelper.App.Services;
 using FlexHelper.App.Workers;
+using Windows.ApplicationModel;
+using Windows.Management.Core;
+using Windows.Storage;
 
 namespace FlexHelper.App.MVVM.ViewModel;
 
@@ -28,11 +33,16 @@ public class MouseMoverViewModel : ObservableRecipient
 
     private Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
-    public MouseMoverViewModel()
+    private StorageSettings Config { get; set; }
+
+    public MouseMoverViewModel(ConfigService configService)
     {
-        Distance = 150;
-        Interval = 10;
-        CoefFast = 1;
+        Config = configService.GetConfig();
+
+        Distance = Config.MouseMoverSettings.Distance;
+        Interval = Config.MouseMoverSettings.Interval;
+        CoefFast = Config.MouseMoverSettings.CoefFast;
+
         BtnText = "Start";
 
         CycleCommand = new RelayCommand(() => OnCycleCommand());

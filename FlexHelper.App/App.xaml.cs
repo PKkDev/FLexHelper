@@ -41,17 +41,20 @@ public partial class App : Application
         UseContentRoot(AppContext.BaseDirectory).
         ConfigureServices((context, services) =>
         {
-            // Views and ViewModels
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
+
             services.AddTransient<ShellViewModel>();
             services.AddTransient<ShellPage>();
+
             services.AddTransient<WiFiConnectViewModel>();
             services.AddTransient<WiFiConnectPage>();
+
             services.AddTransient<MouseMoverViewModel>();
             services.AddTransient<MouseMoverPage>();
 
             services.AddSingleton<InfoBarService>();
+            services.AddSingleton<ConfigService>();
         })
         .Build();
     }
