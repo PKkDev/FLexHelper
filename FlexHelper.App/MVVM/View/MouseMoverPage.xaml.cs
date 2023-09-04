@@ -5,7 +5,7 @@ namespace FlexHelper.App.MVVM.View;
 
 public sealed partial class MouseMoverPage : Page
 {
-    public MouseMoverViewModel ViewModel { get;  }
+    public MouseMoverViewModel ViewModel { get; }
 
     public MouseMoverPage()
     {

@@ -51,7 +51,7 @@ namespace FlexHelper.App.Services
             }
         }
 
-        public StorageSettings GetConfig() => AppSettings;
+        public StorageSettings GetConfig() => AppSettings ?? StorageSettings.CreateDefault();
 
         public void UpdateConfig(StorageSettings config)
         {

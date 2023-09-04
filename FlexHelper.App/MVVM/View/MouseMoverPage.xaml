@@ -26,15 +26,15 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Spacing="5">
-                <NumberBox Header="distance:" Text="{Binding Distance}"/>
+                <NumberBox Header="distance:" Text="{x:Bind ViewModel.Distance, Mode=TwoWay}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Spacing="5">
-                <NumberBox Header="interval:" Text="{Binding Interval}" />
+                <NumberBox Header="interval:" Text="{x:Bind ViewModel.Interval, Mode=TwoWay}" />
             </StackPanel>
 
             <StackPanel Grid.Column="2" Spacing="5">
-                <NumberBox Header="coefFast:" Text="{Binding CoefFast}" />
+                <NumberBox Header="coefFast:" Text="{x:Bind ViewModel.CoefFast, Mode=TwoWay}" />
             </StackPanel>
         </Grid>
 
@@ -47,7 +47,7 @@
                 AccessKey="S"
                 KeyTipPlacementMode="Auto" />
 
-        <Grid RowSpacing="20">
+        <Grid RowSpacing="20" Margin="0 0 0 20">
 
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -87,6 +87,12 @@
             </StackPanel>
 
         </Grid>
+
+        <StackPanel>
+            <Button Command="{x:Bind ViewModel.SaveCommand}">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA35;"></FontIcon>
+            </Button>
+        </StackPanel>
 
     </StackPanel>
 

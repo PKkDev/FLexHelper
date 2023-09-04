@@ -5,7 +5,7 @@ namespace FlexHelper.App.MVVM.View;
 
 public sealed partial class SettingsPage : Page
 {
-    public SettingsViewModel ViewModel { get; set; }
+    public SettingsViewModel ViewModel { get; }
 
     public SettingsPage()
     {
