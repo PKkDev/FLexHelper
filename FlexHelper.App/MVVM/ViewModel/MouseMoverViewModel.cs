@@ -4,9 +4,6 @@ using CommunityToolkit.Mvvm.Input;
 using FlexHelper.App.MVVM.Model;
 using FlexHelper.App.Services;
 using FlexHelper.App.Workers;
-using Windows.ApplicationModel;
-using Windows.Management.Core;
-using Windows.Storage;
 
 namespace FlexHelper.App.MVVM.ViewModel;
 
@@ -15,7 +12,8 @@ public class MouseMoverViewModel : ObservableRecipient
     private int _distance;
     public int Distance
     {
-        get => _distance; set
+        get => _distance;
+        set
         {
             Config.MouseMoverSettings.Distance = value;
             SetProperty(ref _distance, value);
@@ -25,7 +23,8 @@ public class MouseMoverViewModel : ObservableRecipient
     private int _interval;
     public int Interval
     {
-        get => _interval; set
+        get => _interval; 
+        set
         {
             Config.MouseMoverSettings.Interval = value;
             SetProperty(ref _interval, value);
@@ -35,7 +34,8 @@ public class MouseMoverViewModel : ObservableRecipient
     private int _coefFast;
     public int CoefFast
     {
-        get => _coefFast; set
+        get => _coefFast; 
+        set
         {
             Config.MouseMoverSettings.CoefFast = value;
             SetProperty(ref _coefFast, value);
