@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace FLexHelper.Worker
+namespace FLexHelper.Worker.Model
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct CursorPoint

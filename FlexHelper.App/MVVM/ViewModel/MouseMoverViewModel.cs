@@ -13,33 +13,21 @@ public class MouseMoverViewModel : ObservableRecipient
     public int Distance
     {
         get => _distance;
-        set
-        {
-            Config.MouseMoverSettings.Distance = value;
-            SetProperty(ref _distance, value);
-        }
+        set { Config.MouseMoverSettings.Distance = value; SetProperty(ref _distance, value); }
     }
 
     private int _interval;
     public int Interval
     {
-        get => _interval; 
-        set
-        {
-            Config.MouseMoverSettings.Interval = value;
-            SetProperty(ref _interval, value);
-        }
+        get => _interval;
+        set { Config.MouseMoverSettings.Interval = value; SetProperty(ref _interval, value); }
     }
 
     private int _coefFast;
     public int CoefFast
     {
-        get => _coefFast; 
-        set
-        {
-            Config.MouseMoverSettings.CoefFast = value;
-            SetProperty(ref _coefFast, value);
-        }
+        get => _coefFast;
+        set { Config.MouseMoverSettings.CoefFast = value; SetProperty(ref _coefFast, value); }
     }
 
     private string _btnText;

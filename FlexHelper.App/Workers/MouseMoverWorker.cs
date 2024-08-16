@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using FLexHelper.Worker;
+using FLexHelper.Worker.Model;
 using Microsoft.UI.Dispatching;
 using System;
 using System.Threading;

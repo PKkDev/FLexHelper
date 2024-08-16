@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using FLexHelper.Worker.Model;
+using System.Runtime.InteropServices;
 
 namespace FLexHelper.Worker
 {
