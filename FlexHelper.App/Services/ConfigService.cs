@@ -48,9 +48,9 @@ namespace FlexHelper.App.Services
             if (!info.Exists)
             {
                 AppSettingsFile = _folder
-                       .CreateFileAsync(FileName, CreationCollisionOption.ReplaceExisting)
-                       .GetAwaiter()
-                       .GetResult();
+                    .CreateFileAsync(FileName, CreationCollisionOption.ReplaceExisting)
+                    .GetAwaiter()
+                    .GetResult();
 
                 AppSettings = StorageSettings.CreateDefault();
 
