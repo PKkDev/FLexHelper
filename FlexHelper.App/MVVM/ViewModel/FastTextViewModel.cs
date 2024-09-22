@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using FlexHelper.App.MVVM.Model;
+using FlexHelper.App.Services;
 using System.Collections.ObjectModel;
 
 namespace FlexHelper.App.MVVM.ViewModel
@@ -8,13 +10,23 @@ namespace FlexHelper.App.MVVM.ViewModel
     {
         public ObservableCollection<FastTextModel> SavedStrings { get; set; }
 
-        public FastTextViewModel()
+        public RelayCommand ClickSaveCmd { get; set; }
+
+        private StorageSettings Config { get; set; }
+        private readonly ConfigService _configService;
+
+        public FastTextViewModel(ConfigService configService)
         {
-            SavedStrings = new()
+            _configService = configService;
+            Config = configService.GetConfig();
+
+            SavedStrings = new(Config.FastTextModelSettings);
+
+            ClickSaveCmd = new RelayCommand(() =>
             {
-                new FastTextModel("aaaaa", "A"),
-                new FastTextModel("ssssss", "S"),
-            };
+                //Config.FastTextModelSettings = [.. SavedStrings];
+                _configService.UpdateConfig(Config);
+            });
         }
     }
 }

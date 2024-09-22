@@ -11,27 +11,15 @@
 
     <StackPanel>
 
-        <StackPanel.Resources>
+        <Button Padding="5" Content="Сохранить" Command="{x:Bind ViewModel.ClickSaveCmd}"/>
 
-            <!--<DataTemplate x:Key="ContactListViewTemplate">
-                <Grid Margin="0">
-                    <control:FastCopyControl FastTextModel="{Binding}"></control:FastCopyControl>
-                </Grid>
-            </DataTemplate>-->
-
-        </StackPanel.Resources>
-
-        <!--ItemTemplate="{StaticResource ContactListViewTemplate}"-->
         <ListView
-            SelectionMode="None"
-            Padding="0"
-            Margin="0"
-            ItemsSource="{x:Bind ViewModel.SavedStrings}" >
+            SelectionMode="None" 
+            ItemsSource="{x:Bind ViewModel.SavedStrings}">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBox Padding="0" Text="adas"></TextBox>
-                    <!--<control:FastCopyControl FastTextModel="{Binding}"></control:FastCopyControl>-->
+                    <control:FastCopyControl FastTextModel="{Binding}"></control:FastCopyControl>
                 </DataTemplate>
             </ListView.ItemTemplate>
 

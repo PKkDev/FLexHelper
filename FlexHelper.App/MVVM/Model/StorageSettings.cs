@@ -1,12 +1,16 @@
-﻿namespace FlexHelper.App.MVVM.Model
+﻿using System.Collections.Generic;
+
+namespace FlexHelper.App.MVVM.Model
 {
     public class StorageSettings
     {
         public MouseMoverSettings MouseMoverSettings { get; set; }
+        public List<FastTextModel> FastTextModelSettings { get; set; }
 
         public StorageSettings()
         {
             MouseMoverSettings = null;
+            FastTextModelSettings = new();
         }
 
         public static StorageSettings CreateDefault()
@@ -18,6 +22,11 @@
                     Distance = 150,
                     Interval = 10,
                     CoefFast = 1
+                },
+                FastTextModelSettings = new()
+                {
+                    new FastTextModel("Portnov.KA", "A", "Пользователь"),
+                    new FastTextModel("GjhnyjdRbhbkk!2345", "S", "Пароль"),
                 }
             };
         }

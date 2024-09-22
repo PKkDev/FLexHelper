@@ -8,18 +8,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Left">
+    <Grid ColumnSpacing="5" RowSpacing="5" Margin="0 0 0 10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <PasswordBox Header="UserName" Width="150" Name="UserNameBox" Password="{x:Bind FastTextModel.Text, Mode=TwoWay}" PasswordChar="*" PasswordRevealMode="Hidden" AutomationProperties.Name="Sample password box"/>
+        <StackPanel VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Spacing="5">
 
-        <ToggleButton VerticalAlignment="Bottom" ClickMode="Press" Click="UserNameBox_Toggle_Click" >
+            <TextBlock Text="{x:Bind FastTextModel.Description, Mode=OneWay}"/>
+
+            <Button Padding="1" VerticalAlignment="Top" Click="Copy_Click" AccessKey="{x:Bind FastTextModel.Key, Mode=OneWay}">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF413;"></FontIcon>
+            </Button> 
+
+        </StackPanel>
+
+        <PasswordBox Grid.Row="1" Grid.Column="0" Name="PassBox" Password="{x:Bind FastTextModel.Text, Mode=TwoWay}" PasswordChar="*" PasswordRevealMode="Hidden" AutomationProperties.Name="Sample password box"/>
+
+        <ToggleButton Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" ClickMode="Press" Click="Toggle_Click" >
             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7B3;"></FontIcon>
         </ToggleButton>
-
-        <Button VerticalAlignment="Bottom" Click="UserNameBox_Copy_Click" AccessKey="{x:Bind FastTextModel.Key, Mode=OneWay}">
-            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF413;"></FontIcon>
-        </Button>
+    </Grid>
  
-    </StackPanel>
-
 </UserControl>

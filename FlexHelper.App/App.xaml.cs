@@ -87,7 +87,7 @@ public partial class App : Application
         var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
         var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-        appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 500, Height = 500 });
+        appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 550, Height = 500 });
 
         //OverlappedPresenter overlappedPresenter = appWindow.Presenter as OverlappedPresenter;
         //overlappedPresenter.IsResizable = false;
