@@ -11,21 +11,43 @@ namespace FlexHelper.App.Services
     {
         private const string FileName = "config.json";
 
+        private readonly StorageFolder _folder;
+
         private StorageSettings AppSettings { get; set; }
         private StorageFile AppSettingsFile { get; set; }
 
         public ConfigService()
         {
+            if (App.IsNonePackage)
+            {
+                var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+                var path = Path.Combine(baseDir, "LocalAppData");
+
+                var fi = new DirectoryInfo(path);
+                if (!fi.Exists)
+                    fi.Create();
+
+                var task = StorageFolder.GetFolderFromPathAsync(path);
+                task.AsTask().Wait();
+                var res = task.GetResults();
+
+                _folder = res;
+            }
+            else
+            {
+                _folder = ApplicationData.Current.LocalFolder;
+            }
+
             SetOrCreateConfig().GetAwaiter().GetResult();
         }
 
         private async Task SetOrCreateConfig()
         {
-            var path = Path.Combine(ApplicationData.Current.LocalFolder.Path, FileName);
+            var path = Path.Combine(_folder.Path, FileName);
             FileInfo info = new(path);
             if (!info.Exists)
             {
-                AppSettingsFile = ApplicationData.Current.LocalFolder
+                AppSettingsFile = _folder
                        .CreateFileAsync(FileName, CreationCollisionOption.ReplaceExisting)
                        .GetAwaiter()
                        .GetResult();

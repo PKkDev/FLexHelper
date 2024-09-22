@@ -20,6 +20,12 @@ public partial class App : Application
 
     private UIElement? _shell;
 
+#if IS_NONE_PACKAGE
+        public static bool IsNonePackage { get => true; }
+#else
+    public static bool IsNonePackage { get => false; }
+#endif
+
     public static T GetService<T>() where T : class
     {
         if ((App.Current as App)!.Host.Services.GetService(typeof(T)) is not T service)

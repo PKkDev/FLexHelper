@@ -1,25 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <!--<OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>FlexHelper.App</RootNamespace>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>x86;x64;ARM64</Platforms>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
-    <UseWinUI>true</UseWinUI>
-    <EnableMsixTooling>true</EnableMsixTooling>
-    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>62AAE73DF2CE1C6D5B1B89FDC51CB4BBB21D4025</PackageCertificateThumbprint>
-    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <AppxPackageDir>D:\work\develops\FLexHelper\FlexHelperAppReleasePack</AppxPackageDir>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
-    <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundle>Never</AppxBundle>
-    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>-->
+  <PropertyGroup> 
 
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -34,9 +14,14 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <ApplicationIcon>FlexHelper.ico</ApplicationIcon>
 
-    <!--<WindowsPackageType>None</WindowsPackageType>
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>-->
+    <!--Сборка в .exe  relaes + unpackage-->
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(WindowsPackageType)' == 'None'">
+    <DefineConstants>IS_NONE_PACKAGE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
