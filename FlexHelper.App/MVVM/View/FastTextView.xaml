@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="FlexHelper.App.MVVM.View.FastTextView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlexHelper.App.MVVM.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:control="using:FlexHelper.App.MVVM.View.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+
+        <StackPanel.Resources>
+
+            <!--<DataTemplate x:Key="ContactListViewTemplate">
+                <Grid Margin="0">
+                    <control:FastCopyControl FastTextModel="{Binding}"></control:FastCopyControl>
+                </Grid>
+            </DataTemplate>-->
+
+        </StackPanel.Resources>
+
+        <!--ItemTemplate="{StaticResource ContactListViewTemplate}"-->
+        <ListView
+            SelectionMode="None"
+            Padding="0"
+            Margin="0"
+            ItemsSource="{x:Bind ViewModel.SavedStrings}" >
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBox Padding="0" Text="adas"></TextBox>
+                    <!--<control:FastCopyControl FastTextModel="{Binding}"></control:FastCopyControl>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackPanel>
+
+</Page>

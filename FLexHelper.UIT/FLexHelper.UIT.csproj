@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FLexHelper.Worker\FLexHelper.Worker.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Resources\Img\1x.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

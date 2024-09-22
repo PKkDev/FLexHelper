@@ -9,24 +9,27 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid x:Name="AppTitleBar"
-              Canvas.ZIndex="1"
-              Height="{Binding ElementName=NavView, Path=CompactPaneLength}"
-              IsHitTestVisible="True"
-              VerticalAlignment="Top">
-            <Image Source="/Assets/FlexHelper.ico"
-                   HorizontalAlignment="Left"
-                   Width="16"
-                   Height="16" />
-            <TextBlock x:Name="AppTitleBarText"
-                       Style="{StaticResource CaptionTextBlockStyle}"
-                       VerticalAlignment="Center"
-                       Text="Flex Helper"
-                       TextWrapping="NoWrap"
-                       Margin="28,0,0,0"/>
+        <Grid 
+            x:Name="AppTitleBar"
+            Canvas.ZIndex="1"
+            Height="{Binding ElementName=NavView, Path=CompactPaneLength}"
+            IsHitTestVisible="True"
+            VerticalAlignment="Top">
+
+            <Image 
+                Source="/Assets/FlexHelper.ico"
+                HorizontalAlignment="Left"
+                Width="16"
+                Height="16"/>
+
+            <TextBlock 
+                x:Name="AppTitleBarText"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                VerticalAlignment="Center"
+                Text="Flex Helper"
+                TextWrapping="NoWrap"
+                Margin="28,0,0,0"/>
         </Grid>
-
-
 
         <NavigationView
             PaneDisplayMode="LeftCompact"
@@ -35,21 +38,15 @@
             x:Name="NavView"
             Canvas.ZIndex="0"
             IsBackButtonVisible="Collapsed"
-            IsSettingsVisible="false"
-            Loaded="NavView_Loaded"
-            ItemInvoked="NavView_ItemInvoked"
-            BackRequested="NavView_BackRequested"
-            DisplayModeChanged ="NavView_DisplayModeChanged"
-            Header="asdasdeader">
+            IsSettingsVisible="false" 
+            DisplayModeChanged ="NavView_DisplayModeChanged">
 
             <!--<NavigationView.PaneHeader>
                 <RelativePanel VerticalAlignment="Center">
                     <Image Margin="5,0,0,0" Height="35" Canvas.ZIndex="2" Source="/Assets/NavigationViewIcons/microsoft_logo_1.png"></Image>
                 </RelativePanel>
             </NavigationView.PaneHeader>-->
-
-
-
+ 
             <!--<NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
             </NavigationView.AutoSuggestBox>-->
@@ -59,6 +56,12 @@
                 <NavigationViewItem Content="mouse mover" Tag="MouseMover">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE962;"></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Content="fast text" Tag="FastText">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE72E;"></FontIcon>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
@@ -86,7 +89,7 @@
 
                 <InfoBar x:Name="PageInfoBar" Canvas.ZIndex="2" IsOpen="False" HorizontalAlignment="Right" />
 
-                <Frame x:Name="ContentFrame" NavigationFailed="ContentFrame_NavigationFailed">
+                <Frame x:Name="ContentFrame">
                     <Frame.ContentTransitions>
                         <TransitionCollection>
                             <NavigationThemeTransition  />

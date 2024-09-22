@@ -1,7 +1,7 @@
 ﻿using FLexHelper.UIT.Core;
 using FLexHelper.UIT.MVVM.Model;
 using FLexHelper.UIT.Services;
-using FLexHelper.Worker;
+//using FLexHelper.Worker;
 using System.Threading;
 
 namespace FLexHelper.UIT.MVVM.ViewModel
@@ -39,7 +39,7 @@ namespace FLexHelper.UIT.MVVM.ViewModel
         public RelyCommand CycleCommand { get; set; }
         public RelyCommand SaveConfigCommand { get; set; }
 
-        public TestWorker testWorker { get; set; }
+        //public TestWorker testWorker { get; set; }
         private bool _workIsStarted = false;
         private AppSettingsConfig config;
 
@@ -70,15 +70,15 @@ namespace FLexHelper.UIT.MVVM.ViewModel
                 BtnText = "Stop";
                 _workIsStarted = true;
                 var uiContext = SynchronizationContext.Current;
-                testWorker = new TestWorker(Distance, Interval, CoefFast, uiContext);
+                //testWorker = new TestWorker(Distance, Interval, CoefFast, uiContext);
                 OnPropertyChanged("testWorker");
-                testWorker.Start();
+                //testWorker.Start();
             }
             else
             {
                 BtnText = "Start";
                 _workIsStarted = false;
-                testWorker.Stop();
+                //testWorker.Stop();
             }
         }
     }

@@ -7,8 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using FlexHelper.App.MVVM.ViewModel;
 using FlexHelper.App.MVVM.View;
 using Microsoft.UI.Xaml.Controls;
-using FlexHelper.App.Services;
-using Microsoft.UI.Windowing;
+using FlexHelper.App.Services; 
+using FlexHelper.App.MVVM.View.Controls;
 
 namespace FlexHelper.App;
 
@@ -53,8 +53,14 @@ public partial class App : Application
             services.AddTransient<MouseMoverViewModel>();
             services.AddTransient<MouseMoverPage>();
 
+            services.AddTransient<FastTextViewModel>();
+            services.AddTransient<FastTextView>(); 
+
+            services.AddTransient<FastCopyControl>();
+
             services.AddSingleton<InfoBarService>();
             services.AddSingleton<ConfigService>();
+            services.AddSingleton<NavigationHelperService>();
         })
         .Build();
     }
