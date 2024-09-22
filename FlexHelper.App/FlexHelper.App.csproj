@@ -15,8 +15,8 @@
     <ApplicationIcon>FlexHelper.ico</ApplicationIcon>
 
     <!--Сборка в .exe  relaes + unpackage-->
-    <WindowsPackageType>None</WindowsPackageType>
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <!--<WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>-->
 
   </PropertyGroup>
 
